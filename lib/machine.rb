@@ -3,11 +3,13 @@ require 'byebug'
 require_relative 'product'
 
 class Machine
-  attr_reader :products
+  attr_reader :products, :coins
 
   def initialize
     @products = []
+    @coins = []
     load_products
+    load_coins
   end
 
   def self.start
@@ -26,6 +28,13 @@ class Machine
     CSV.foreach('./files/products.csv', headers: true, header_converters: :symbol).each do |row|
       product = Product.new(name: row[:name], quantity: row[:quantity], price: row[:price])
       @products << product if product.valid?
+    end
+  end
+
+  def load_coins
+    CSV.foreach('./files/coins.csv', headers: true, header_converters: :symbol).each do |row|
+      coin = Coin.new(amount: row[:amount], currency_value: row[:currency_value], quantity: row[:quantity])
+      @coins << coin if coin.valid?
     end
   end
 
