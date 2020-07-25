@@ -1,0 +1,16 @@
+require:
+  - rubocop-rspec
+
+# Common configuration.
+AllCops:
+  Layout/LineLength:
+    Max: 120
+
+  Metrics/MethodLength:
+    Max: 25
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
