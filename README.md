@@ -15,11 +15,11 @@ will be of denominations 1p, 2p, 5p, 10p, 20p, 50p, £1, £2.
 
 ● The machine should keep track of the products and change that it contains.
 
-#### Technologies Version
+#### Technologies:
 = Ruby and Rspec.
 
 - Gemfile is added to handle respective gems
-- .ruby-version is added to configure ruby version
+- .ruby-version is added to configure ruby version (2.6.0 is set at the moment).
 - rubocop is added.
 
 #### Files
