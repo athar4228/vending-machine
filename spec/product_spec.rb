@@ -1,15 +1,14 @@
 require 'product'
 
 describe Product do
+  subject(:product) { described_class.new(name: 'Water', quantity: 2, price: 10) }
 
-  subject(:product) { Product.new(name: 'Water', quantity: 2, price: 10) }
-
-  context '#initialize' do
-    it "has name" do
-      expect(product.name).to eq "Water"
+  describe '#initialize' do
+    it 'has name' do
+      expect(product.name).to eq 'Water'
     end
 
-    it "has price" do
+    it 'has price' do
       expect(product.price).to eq 10
     end
 
@@ -18,16 +17,23 @@ describe Product do
     end
   end
 
-  context '#valid' do
+  describe '#valid' do
     it 'is valid ' do
-      expect(product.valid?).to be_truthy
+      expect(product).to be_valid
     end
   end
 
-  context '#unavailable' do
+  describe '#unavailable' do
     it 'is unavailable if quantity is less than or eq 0' do
       product.quantity = 0
-      expect(product.unavailable?).to be_truthy
+      expect(product).to be_unavailable
+    end
+  end
+
+  describe '#available' do
+    it 'is available if quantity is less than or eq 0' do
+      product.quantity = 2
+      expect(product).to be_available
     end
   end
 end
